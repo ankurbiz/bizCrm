@@ -15,10 +15,60 @@ export class AppComponent {
       url: '/home',
       icon: 'home'
     },
+    // {
+    //   title: 'List',
+    //   url: '/list',
+    //   icon: 'list'
+    // },
+    // {
+    //   title: 'Login',
+    //   url: '/login',
+    //   icon: 'list'
+    // },
     {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
+      title: 'Calendar',
+      url: '/calender',
+      icon: 'calendar'
+    },
+    {
+      title: 'Leads',
+      url: '/leads',
+      icon: 'people'
+    },
+    {
+      title: 'Contacts',
+      url: '/contacts',
+      icon: 'book'
+    },
+    {
+      title: 'Accounts',
+      url: '/accounts',
+      icon: 'calculator'
+    },
+    {
+      title: 'Deals',
+      url: '/deals',
+      icon: 'contact'
+    },
+    {
+      title: 'Tasks',
+      url: '/tasks',
+      icon: 'bookmarks'
+    },
+    {
+      title: 'Events',
+      url: '/events',
+      icon: 'logo-buffer'
+    },
+    {
+      title: 'Contact Us',
+      url: '/contactus',
+      icon: 'contacts'
+    },    
+    {
+      title: 'Settings',
+      url: '/settings',
+      icon: 'settings'
     }
   ];
 

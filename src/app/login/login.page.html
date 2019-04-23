@@ -1,0 +1,38 @@
+<ion-content padding>
+  <ion-grid>    
+      <ion-row>
+        <ion-col>
+          <img  style="font-weight: 800;max-width:150px;margin-left: 80px"src="assets/img/test.png" class="logo" alt="bizCrm" />
+        </ion-col> 
+    </ion-row> 
+  </ion-grid>
+
+<!-- Login form -->
+<form class="list-form">  
+
+  <ion-item>    
+    <ion-icon name="globe"></ion-icon>
+    <ion-input placeholder="Url"></ion-input>
+  </ion-item>
+
+  <ion-item>    
+    <ion-icon name="contact"></ion-icon>
+    <ion-input  placeholder="Username"></ion-input>
+  </ion-item>
+
+  <ion-item> 
+    <ion-icon name="key"></ion-icon>
+    <ion-input  placeholder="Password"></ion-input>
+  </ion-item>
+</form> 
+
+<div>
+    <ion-button icon-left size="medium" expand="full" shape="round"
+      style="color:primary;font-weight: 800;margin-top:20px" (click)="authorizeLogin()" color="primary"
+       tappable>
+      Login
+    </ion-button>    
+</div>
+</ion-content>
+  
+
