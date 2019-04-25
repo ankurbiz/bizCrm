@@ -27,7 +27,8 @@ const routes: Routes = [
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
   { path: 'feedbacks', loadChildren: './feedbacks/feedbacks.module#FeedbacksPageModule' },
   { path: 'deals', loadChildren: './deals/deals.module#DealsPageModule' },
-  { path: 'contactus', loadChildren: './contactus/contactus.module#ContactusPageModule' }
+  { path: 'contactus', loadChildren: './contactus/contactus.module#ContactusPageModule' },
+  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' }
 ];
 
 @NgModule({

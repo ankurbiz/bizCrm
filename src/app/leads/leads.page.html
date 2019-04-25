@@ -10,5 +10,21 @@
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <ion-icon [name]="item.icon" slot="start"></ion-icon>
+        {{item.title}}
+      <div class="item-note" slot="end">
+        {{item.note}}
+      </div>
+    </ion-item>
+  </ion-list>  
 
+  <button>
+    <ion-ripple-effect></ion-ripple-effect>
+    Button
+  </button>
+    <!-- <div *ngIf="selectedItem" padding>
+      You navigated here from <b>{{selectedItem.title }}</b>
+    </div> -->
 </ion-content>

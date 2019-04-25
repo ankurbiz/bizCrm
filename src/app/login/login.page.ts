@@ -52,17 +52,27 @@ export class LoginPage implements OnInit {
     console.log(this.loginDetails);
     console.log(this.loginDetails.username);
     console.log(this.loginDetails.password);
-    let httpHeaders = new HttpHeaders({
-          'Content-Type' :'application/x-www-form-urlencoded;charset=UTF-8'
-        });    
 
-         let options = {
-          headers: httpHeaders
-         };   
+    // let httpHeaders = new HttpHeaders({
+    //   'Content-Type' :'application/x-www-form-urlencoded;charset=UTF-8'
+    // });    
 
-    return this.http.post('http://fortesting.biztechnosys.com/modules/Mobile/api.php',{_operation:'login',username:'admin',password:'admin'},options).subscribe((res : any[])=>{
-      console.log(res);
-    });
+    // let options = {
+    //   headers: httpHeaders
+    // };   
+
+    // const formData = new FormData();
+    // formData.append('_operation', 'login');
+    // formData.append('username', 'admin');
+    // formData.append('password', 'admin');
+
+    // console.log(formData);
+
+    // return this.http.post('http://fortesting.biztechnosys.com/modules/Mobile/api.php',formData).subscribe((res : any[])=>{
+    //   console.log(res);
+    // });
+
+    
     this.navCtrl.navigateRoot('/home');
   }
 
