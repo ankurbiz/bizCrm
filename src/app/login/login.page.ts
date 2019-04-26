@@ -15,7 +15,6 @@ export class LoginDetails {
   styleUrls: ['./login.page.scss'],
 })
 
-
 export class LoginPage implements OnInit {
   public onLoginForm: FormGroup;
   public loginDetails: LoginDetails;
@@ -30,8 +29,9 @@ export class LoginPage implements OnInit {
     private http: HttpClient
   ) {
     this.loginDetails = new LoginDetails();
+    
   }
-
+  
   ngOnInit() {
 
     this.onLoginForm = this.formBuilder.group({
@@ -48,32 +48,37 @@ export class LoginPage implements OnInit {
   }
   
   authorizeLogin() {
+  
+    let headers = new HttpHeaders();     
+    headers.append('Content-Type' ,'application/x-www-form-urlencoded;charset=UTF-8 ');
+    headers.append('Content-Type','Access-Control-Allow-Origin:*');
 
-    console.log(this.loginDetails);
-    console.log(this.loginDetails.username);
-    console.log(this.loginDetails.password);
+    let loginData = {_operation:'login', username:'admin', password:'admin'};
+    let options = {
+      headers: headers
+    };       
 
-    // let httpHeaders = new HttpHeaders({
-    //   'Content-Type' :'application/x-www-form-urlencoded;charset=UTF-8'
-    // });    
+    return new Promise((resolve, reject) => {
 
-    // let options = {
-    //   headers: httpHeaders
-    // };   
-
-    // const formData = new FormData();
-    // formData.append('_operation', 'login');
-    // formData.append('username', 'admin');
-    // formData.append('password', 'admin');
-
-    // console.log(formData);
-
-    // return this.http.post('http://fortesting.biztechnosys.com/modules/Mobile/api.php',formData).subscribe((res : any[])=>{
-    //   console.log(res);
-    // });
-
+    var formdata = new FormData();
+    formdata.append('_operation','login');
+    formdata.append('username','admin');
+    formdata.append('password','admin');
+  
+    this.http.post('http://localhost/test/modules/Mobile/api.php', formdata, options)
+      .subscribe(data => {         
+        console.log(data);
+        data = Array.of(data); 
+        console.log(data);          
+        //localStorage.setItem('user',data);
+        //this.navCtrl.navigateRoot('/home');
+      }, (err) => {          
+        reject("Invalid Username OR Password!!!");
+        console.log(err);          
+      });
+  });
+  
     
-    this.navCtrl.navigateRoot('/home');
   }
 
 }
