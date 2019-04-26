@@ -8,7 +8,7 @@
   </ion-grid>
 
   <!-- Login form -->
-  <form [formGroup]="onLoginForm" class="list-form">
+  <form [formGroup]="onLoginForm"  (click)="authorizeLogin()"  class="list-form">
      
     <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating" color="dark">
@@ -17,11 +17,11 @@
         </ion-label>
         <ion-input color="dark" type="text" formControlName="url" border-color="light"></ion-input>
       </ion-item>
-    <p ion-text *ngIf="onLoginForm.get('url').touched && onLoginForm.get('url').hasError('required')">
-      <ion-text color="warning">
-        Required Field
-      </ion-text>
-    </p>
+      <p ion-text *ngIf="onLoginForm.get('url').touched && onLoginForm.get('url').hasError('required')">
+        <ion-text color="warning">
+          Required Field
+        </ion-text>
+      </p>
 
     <ion-item no-padding class="animated fadeInUp">
       <ion-label position="floating" color="dark">
@@ -50,16 +50,13 @@
       </ion-text>
     </p>
    
-  </form>
-
-  <div>
     <ion-button icon-left size="medium" expand="full" shape="round"
-      style="color:primary;font-weight: 800;margin-top:10px" (click)="authorizeLogin()" color="primary"
-      [disabled]="!onLoginForm.valid" tappable>
+      style="color:primary;font-weight: 800;margin-top:10px"  color="primary"
+      [disabled]="!onLoginForm.valid" type="submit" tappable>
       Login
-    </ion-button>
-    
-  </div>
+    </ion-button>    
+  
+</form>
 
   <div class="copyright">  
     Copyright@2019<ion-text color="primary"> BizCrm</ion-text> 

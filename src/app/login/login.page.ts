@@ -18,7 +18,7 @@ export class LoginDetails {
 export class LoginPage implements OnInit {
   public onLoginForm: FormGroup;
   public loginDetails: LoginDetails;
-
+ 
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
@@ -29,7 +29,6 @@ export class LoginPage implements OnInit {
     private http: HttpClient
   ) {
     this.loginDetails = new LoginDetails();
-    
   }
   
   ngOnInit() {
@@ -66,17 +65,17 @@ export class LoginPage implements OnInit {
     formdata.append('password','admin');
   
     this.http.post('http://localhost/test/modules/Mobile/api.php', formdata, options)
-      .subscribe(data => {         
-        console.log(data);
-        data = Array.of(data); 
-        console.log(data);          
-        //localStorage.setItem('user',data);
-        //this.navCtrl.navigateRoot('/home');
-      }, (err) => {          
-        reject("Invalid Username OR Password!!!");
-        console.log(err);          
-      });
-  });
+        .subscribe(data => {         
+          console.log(data);
+          data = Array.of(data); 
+          console.log(data);          
+          //localStorage.setItem('user',data);
+          this.navCtrl.navigateRoot('/home');
+        }, (err) => {          
+          reject("Invalid Username OR Password!!!");
+          console.log(err);          
+        });
+    });
   
     
   }
