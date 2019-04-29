@@ -1,5 +1,7 @@
 {
   "name": "bizcrm",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

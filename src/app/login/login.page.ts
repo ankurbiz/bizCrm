@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { HttpClient,HttpHeaders  } from '@angular/common/http';
 
+
 export class LoginDetails {
   url : string;
   username: string;
