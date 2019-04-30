@@ -8,14 +8,14 @@
   </ion-grid>
 
   <!-- Login form -->
-  <form [formGroup]="onLoginForm"  (click)="authorizeLogin()"  class="list-form">
+  <form [formGroup]="onLoginForm" (submit)="authorizeLogin()"  class="list-form">
      
     <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating" color="dark">
           <ion-icon name="globe" item-start color="dark"></ion-icon>
           Url
         </ion-label>
-        <ion-input color="dark" type="text" formControlName="url" border-color="light"></ion-input>
+        <ion-input color="dark" type="text" [(ngModel)]="loginData.url" formControlName="url" border-color="light"></ion-input>
       </ion-item>
       <p ion-text *ngIf="onLoginForm.get('url').touched && onLoginForm.get('url').hasError('required')">
         <ion-text color="warning">
@@ -28,7 +28,7 @@
         <ion-icon name="person" item-start color="dark"></ion-icon>
         Username
       </ion-label>
-      <ion-input color="dark" type="text" formControlName="username" border-color="light"></ion-input>
+      <ion-input color="dark" type="text" [(ngModel)]=" loginData.username" formControlName="username" border-color="light"></ion-input>
     </ion-item>
     <p ion-text *ngIf="onLoginForm.get('username').touched && onLoginForm.get('username').hasError('required')">
       <ion-text color="warning">
@@ -41,7 +41,7 @@
         <ion-icon name="lock" item-start color="dark"></ion-icon>
         Password
       </ion-label>
-      <ion-input color="dark" type="password" formControlName="password"></ion-input>
+      <ion-input color="dark" type="password" [(ngModel)]=" loginData.password" formControlName="password"></ion-input>
     </ion-item>
     <p ion-text color="warning"
       *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">
@@ -54,13 +54,11 @@
       style="color:primary;font-weight: 800;margin-top:10px"  color="primary"
       [disabled]="!onLoginForm.valid" type="submit" tappable>
       Login
-    </ion-button>    
-  
+    </ion-button>      
 </form>
 
   <div class="copyright">  
     Copyright@2019<ion-text color="primary"> BizCrm</ion-text> 
     <p>Version 1.0</p>  
   </div>
-
 </ion-content>
