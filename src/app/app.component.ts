@@ -26,6 +26,11 @@ export class AppComponent {
     //   icon: 'list'
     // },
     {
+      title: 'Contacts',
+      url: '/contacts',
+      icon: 'book'
+    },
+    {
       title: 'Calendar',
       url: '/calender',
       icon: 'calendar'
@@ -36,35 +41,35 @@ export class AppComponent {
       icon: 'people'
     },
     {
-      title: 'Contacts',
-      url: '/contacts',
-      icon: 'book'
-    },
-    {
       title: 'Accounts',
       url: '/accounts',
       icon: 'calculator'
-    },
-    {
-      title: 'Deals',
-      url: '/deals',
-      icon: 'contact'
-    },
-    {
-      title: 'Tasks',
-      url: '/tasks',
-      icon: 'bookmarks'
-    },
+    },    
     {
       title: 'Events',
       url: '/events',
       icon: 'logo-buffer'
     },
     {
+      title: 'Tasks',
+      url: '/tasks',
+      icon: 'bookmarks'
+    },
+    // {
+    //   title: 'Deals',
+    //   url: '/deals',
+    //   icon: 'contact'
+    // },     
+    {
       title: 'Contact Us',
       url: '/contactus',
       icon: 'contacts'
-    },    
+    }, 
+    {
+      title: 'About Us',
+      url: '/aboutus',
+      icon: 'contact'
+    },   
     {
       title: 'Settings',
       url: '/settings',
@@ -78,6 +83,7 @@ export class AppComponent {
     private statusBar: StatusBar
   ) {
     this.initializeApp();
+    var loginData = JSON.parse(localStorage.getItem('logindata'));
   }
 
   initializeApp() {

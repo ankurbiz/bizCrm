@@ -12,16 +12,11 @@
 <ion-content>
     <ion-toolbar>
         <ion-searchbar></ion-searchbar>
-      </ion-toolbar>
-    <ion-card class="welcome-card">
-      <ion-img src="/assets/img/bizcrm.jpeg"></ion-img>      
-    </ion-card>
-    <ion-list lines="none">
-
-      <ion-item href="#">
+      </ion-toolbar>   
+    <ion-list lines="none"> 
+      <ion-item href="javascript:void(0)" *ngFor="let module of modules;let i = index">
         <ion-icon slot="start" color="medium" name="book"></ion-icon>
-        <ion-label>Ionic Documentation</ion-label>
-      </ion-item>
-     
+        <ion-label *ngIf="module.isEntity"> {{ module.label }}</ion-label>
+      </ion-item>     
     </ion-list>
 </ion-content>

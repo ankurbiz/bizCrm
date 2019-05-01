@@ -25,6 +25,7 @@ export class HomeService {
     formdata.append('_operation','loginAndFetchModules');
     formdata.append('username',moduledata.username);
     formdata.append('password',moduledata.password);
+    formdata.append('session',moduledata.session);
   
     return this.http.post<any>(moduledata.url + '/modules/Mobile/api.php', formdata, options).pipe(
       tap((logindata: any) => console.log(`moduledata`)),

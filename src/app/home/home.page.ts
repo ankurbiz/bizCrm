@@ -11,14 +11,15 @@ import { HeaderService } from '../services/header/header.service';
 export class HomePage implements OnInit {
 
   data : any;
+  modules: [];
+
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public loadingCtrl :LoadingController,
     private homeService : HomeService,
     private headerservice : HeaderService, 
-  ) {   
-
+  ) {      
  }
 
   ionViewWillEnter() {
@@ -26,19 +27,25 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {    
-    let options = this.headerservice.callHeader();   
 
+    var loginData = JSON.parse(localStorage.getItem('logindata'));
+    var session = localStorage.getItem('session');
+
+    let options = this.headerservice.callHeader(); 
     var getServiceData = {
-          'url' : 'http://localhost/test',
-          'username' : 'superadmin',
-          'password' : 'admin',
-          'session' : '62595cc84b1b42b75'
+      'url' : loginData.url,
+      'username' : loginData.username,
+      'password' : loginData.password,
+      'session' : session
     };
-    
 
     this.homeService.getModuleList(getServiceData,options).subscribe(res => {     
-      this.data = res;     
-      console.log(this.data);
+      this.data = res;  
+      if(this.data.success === true ){ 
+        console.log(this.data.result.modules);
+        this.modules = this.data.result.modules;        
+        return this.modules;
+      }      
     },(err) => {       
        console.log(err);   
     });
