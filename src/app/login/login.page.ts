@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { AuthService } from '../services/auth/auth.service';
 import { HeaderService } from '../services/header/header.service';
-import { HttpHeaders} from '@angular/common/http';
+import { ToastService } from '../services/toast/toast.service';
 
 export class LoginDetails {
   url : string;
@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
 
   data:any;
   loginData = {};
-     
+
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
@@ -32,9 +32,13 @@ export class LoginPage implements OnInit {
     public loadingCtrl: LoadingController,
     private formBuilder: FormBuilder, 
     private authservice : AuthService,
-    private Headerservice : HeaderService, 
+    private headerservice : HeaderService, 
+    private toastService: ToastService, 
   ) {
-    this.loginDetails = new LoginDetails();
+    this.loginDetails = new LoginDetails();    
+    if(localStorage.getItem('session') !== null){
+      this.navCtrl.navigateRoot('/home');
+    }
   }
   
   ngOnInit() {
@@ -52,26 +56,30 @@ export class LoginPage implements OnInit {
   }
   
   ionViewWillEnter() {
-    this.menuCtrl.enable(false);
+      this.menuCtrl.enable(false);
   }
 
   authorizeLogin() {
-
-    let options = this.Headerservice.callHeader();  
-    // let headers = new HttpHeaders();     
-    // headers.append('Content-Type' ,'application/x-www-form-urlencoded;charset=UTF-8 ');
-    // headers.append('Content-Type','Access-Control-Allow-Origin:*');
-  
-    // let options= {
-    //   headers: headers
-    // };  
-
-    this.authservice.login(this.loginData,options).then((result) => {      
-      this.data = result;
-      console.log('testdata'+ this.data);
-      this.navCtrl.navigateRoot('/home');
-    },(err) => {
-      console.log(err);     
+    let options = this.headerservice.callHeader();     
+    this.authservice.login(this.loginData,options).subscribe(res => {     
+      this.data = res;      
+      if(this.data !==null){
+          if(this.data.success === true){    
+            localStorage.setItem('logindata', JSON.stringify(this.loginData));
+            localStorage.setItem('userdata', this.data.result.login);
+            localStorage.setItem('session', this.data.result.login.session);
+            this.navCtrl.navigateRoot('/home');
+          }else{    
+            this.toastService.presentToast('Username and password wrong');     
+          }
+      }else{
+          this.toastService.presentToast('Something Wrong');
+      } 
+    },(err) => {       
+       console.log(err);   
     });
   }
+  
+  
+  
 }

@@ -4,10 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 import { HeaderService } from '../services/header/header.service';
+
 import { HttpClientModule  } from '@angular/common/http';
-
 import { IonicModule } from '@ionic/angular';
-
 import { LoginPage } from './login.page';
 
 const routes: Routes = [
