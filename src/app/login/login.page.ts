@@ -58,7 +58,7 @@ export class LoginPage implements OnInit {
   ionViewWillEnter() {
       this.menuCtrl.enable(false);
   }
-
+  
   authorizeLogin() {
     let options = this.headerservice.callHeader();     
     this.authservice.login(this.loginData,options).subscribe(res => {     
