@@ -77,13 +77,14 @@ export class AppComponent {
     }
   ];
 
+  login: [];
+  
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
     this.initializeApp();
-    var loginData = JSON.parse(localStorage.getItem('logindata'));
   }
 
   initializeApp() {
