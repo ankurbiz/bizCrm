@@ -9,7 +9,7 @@ export class HeaderService {
   callHeader(){    
     let headers = new HttpHeaders();     
     headers.append('Content-Type' ,'application/x-www-form-urlencoded;charset=UTF-8');
-    headers.append('Content-Type','Access-Control-Allow-Origin:*');
+    headers.append('Content-Type','Access-Control-Allow-Origin:*');    
     return {
       headers: headers
     };  

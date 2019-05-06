@@ -10,5 +10,9 @@
 </ion-header>
 
 <ion-content>
-
+    <ion-list>
+        <ion-item  *ngFor="let contact of modules;let i = index">
+          <ion-label (click)="getrecordDetail(contact.id)"> {{ contact.label }}</ion-label>
+        </ion-item>       
+      </ion-list>
 </ion-content>

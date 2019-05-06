@@ -42,9 +42,10 @@ export class HomePage implements OnInit {
     this.homeService.getModuleList(getServiceData,options).subscribe(res => {     
       this.data = res;  
       if(this.data.success === true ){ 
-        console.log(this.data.result.modules);
         this.modules = this.data.result.modules;        
         return this.modules;
+      }else{
+        console.log('Something Problem...');
       }      
     },(err) => {       
        console.log(err);   

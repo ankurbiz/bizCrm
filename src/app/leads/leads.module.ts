@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
 import { IonicModule } from '@ionic/angular';
-
 import { LeadsPage } from './leads.page';
+import { ModuleService } from '../services/module/module.service';
+import { HeaderService } from '../services/header/header.service';
+import { HttpClientModule  } from '@angular/common/http';
+
 
 const routes: Routes = [
   {
@@ -19,8 +21,13 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    HttpClientModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [LeadsPage]
+  declarations: [LeadsPage],
+  providers: [
+    ModuleService,
+    HeaderService
+  ]
 })
 export class LeadsPageModule {}

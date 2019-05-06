@@ -10,5 +10,9 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+      <ion-item  *ngFor="let event of modules;let i = index">
+        <ion-label (click)="getrecordDetail(event.id)"> {{ event.eventstartdate }}  <p>{{ event.label }}</p>  <p>{{ event.eventtype }}</p>  </ion-label>
+      </ion-item>       
+    </ion-list>
 </ion-content>
